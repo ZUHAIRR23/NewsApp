@@ -23,6 +23,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // title untuk halaman home
+        $title = 'Home';
+
+        return view('home', compact(
+            'title'
+        ));
     }
 }

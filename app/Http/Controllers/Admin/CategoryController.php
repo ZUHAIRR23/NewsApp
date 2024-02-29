@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use GuzzleHttp\RedirectMiddleware;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -14,7 +18,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('home.category.index');
+        // title halaman index
+        $title = 'Category';
+
+        // megurutkan data bedasarkan data terbaru
+        $category = Category::latest()->get();
+        return view('home.category.index', compact(
+            'category',
+            'title'
+        ));
     }
 
     /**
@@ -24,7 +36,12 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        // title halaman create
+        $title = 'Create';
+
+        return view('home.category.create', compact(
+            'title'
+        ));
     }
 
     /**
@@ -35,7 +52,29 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //melakukan validasi data
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        // melakukan upload image
+        $image = $request->file('image');
+        // menyimpan image yang di upload ke folder storage/app/public/category 
+        // fungsi hashName untuk generate nama yang unik
+        // fungsi getClientOriginalName itu menggunakan nama asli dari image
+        $image->storeAs('public/category', $image->hashName());
+        
+        // melakukan save to database
+        Category::create([
+            'name' => $request->name,
+            'slug' => Str::singular($request->name),
+            'image' => $image->hashName()
+        ]);
+
+        // melakukan return redirect
+        return redirect()->route('category.index')
+            ->with('success', 'Category Berhasil Ditambahkan');
     }
 
     /**
@@ -57,7 +96,17 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        //title halaman edit
+        $title = 'Edit';
+
+        // get category data by id
+        // fungsi get data by id adalah mengambil data berdasarkan id yang di inputkan
+        $category = Category::find($id);
+
+        return view('home.category.edit', compact(
+            'category',
+            'title'
+        ));
     }
 
     /**
@@ -69,7 +118,43 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // melakukan validai data
+        $this->validate($request,[
+            'name' => 'required|max:100',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        // get data category by id
+        $category = Category::find($id);
+
+        // jika image kosong tidak di update
+        if($request->file('image') == '') {
+            $category->update([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name)
+            ]);
+
+            return redirect()->route('category.index');
+
+        } else {
+            // jika gambarnya di update
+            // hapus image lama
+            Storage::disk('local')->delete('public/category/' .basename($category->image));
+
+            // upload image baru
+            $image = $request->file('image');
+            $image->storeAs('public/category/', $image->hashName());
+
+            // update data
+            $category->update([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'image' => $image->hashName()
+            ]);
+
+            return redirect()->route('category.index');
+        }
+
     }
 
     /**
