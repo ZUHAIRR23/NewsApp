@@ -8,12 +8,15 @@
                 <span>Home</span>
             </a>
         </li><!-- End Dashboard Nav -->
+
+        @if (Auth::user()->role == 'admin')
         <li class="nav-item">
             <a class="nav-link mt-2" href="{{ route('category.index') }}">
                 <i class="bi bi-basket2"></i>
                 <span>Category</span>
             </a>
         </li>
+        @endif
 
         <!-- End Blank Page Nav -->
 

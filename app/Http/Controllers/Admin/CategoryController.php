@@ -21,8 +21,8 @@ class CategoryController extends Controller
         // title halaman index
         $title = 'Category';
 
-        // megurutkan data bedasarkan data terbaru
-        $category = Category::latest()->get();
+        // megurutkan data bedasarkan data terbaru dengan paginate
+        $category = Category::latest()->paginate(5);
         return view('home.category.index', compact(
             'category',
             'title'
@@ -165,6 +165,16 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // get data by id
+        $category = Category::find($id);
+
+        // delete image
+        // basename itu untuk mengambil nama file
+        Storage::disk('local')->delete('public/category/'. basename($category->image));
+
+        // delete data by id
+        $category->delete();
+
+        return redirect()->route('category.index');
     }
 }

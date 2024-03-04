@@ -21,10 +21,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// handle redirect register to login
+// Route::match(['get', 'post'], '/register', function () {
+//     return redirect('/login');
+// });
 
-// Route for News using Resource
-Route::resource('news', NewsController::class);
+// Route Middleware
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route for using Resource
-Route::resource('category', CategoryController::class);
+    // Route for Admin
+    Route::middleware(['auth', 'admin'])->group(function () {
+        // Route for News using Resource
+        Route::resource('news', NewsController::class);
+        // Route for using Resource
+        Route::resource('category', CategoryController::class);
+    });
+});
