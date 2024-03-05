@@ -5,12 +5,18 @@
         <div class="card p-4">
             <h3>Category Index</h3>
 
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end py-2">
                 <a href="{{ route('category.create') }}" class="btn btn-primary">
                     <i class="bi bi-plus"></i>
                     Create Category
                 </a>
             </div>
+
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
 
             <div class="container mt-3">
                 <div class="card">
@@ -41,7 +47,7 @@
                                         <td>
                                             <img src="{{ $row->image }}" alt="image" width="100px">
                                         </td>
-                                        <td>
+                                        <td class="d-flex justify-content-center">
                                             {{-- Show using modal with id {{ row->id }} --}}
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                                 data-bs-target="#basicModal{{ $row->id }}">

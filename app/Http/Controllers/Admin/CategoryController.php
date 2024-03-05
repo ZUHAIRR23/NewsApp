@@ -64,7 +64,7 @@ class CategoryController extends Controller
         // fungsi hashName untuk generate nama yang unik
         // fungsi getClientOriginalName itu menggunakan nama asli dari image
         $image->storeAs('public/category', $image->hashName());
-        
+
         // melakukan save to database
         Category::create([
             'name' => $request->name,
@@ -74,7 +74,7 @@ class CategoryController extends Controller
 
         // melakukan return redirect
         return redirect()->route('category.index')
-            ->with('success', 'Category Berhasil Ditambahkan');
+            ->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -107,6 +107,10 @@ class CategoryController extends Controller
             'category',
             'title'
         ));
+
+        // return redirect
+        return redirect()->route('category.index')
+            ->with('success', 'Data Berhasil Diedit');
     }
 
     /**
@@ -118,8 +122,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // melakukan validai data
-        $this->validate($request,[
+        // melakukan validasi data
+        $this->validate($request, [
             'name' => 'required|max:100',
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -128,18 +132,18 @@ class CategoryController extends Controller
         $category = Category::find($id);
 
         // jika image kosong tidak di update
-        if($request->file('image') == '') {
+        if ($request->file('image') == '') {
             $category->update([
                 'name' => $request->name,
                 'slug' => Str::slug($request->name)
             ]);
 
-            return redirect()->route('category.index');
-
+            return redirect()->route('category.index')
+                ->with('success', 'Data Berhasil Diedit');
         } else {
             // jika gambarnya di update
             // hapus image lama
-            Storage::disk('local')->delete('public/category/' .basename($category->image));
+            Storage::disk('local')->delete('public/category/' . basename($category->image));
 
             // upload image baru
             $image = $request->file('image');
@@ -152,9 +156,9 @@ class CategoryController extends Controller
                 'image' => $image->hashName()
             ]);
 
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')
+                ->with('success', 'Data Berhasil Diedit');
         }
-
     }
 
     /**
@@ -170,11 +174,12 @@ class CategoryController extends Controller
 
         // delete image
         // basename itu untuk mengambil nama file
-        Storage::disk('local')->delete('public/category/'. basename($category->image));
+        Storage::disk('local')->delete('public/category/' . basename($category->image));
 
         // delete data by id
         $category->delete();
 
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')
+            ->with('success', 'Data Berhasil Dihapus');
     }
 }

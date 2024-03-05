@@ -16,6 +16,12 @@
                 <span>Category</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link mt-2" href="{{ route('news.index') }}">
+                <i class="bi bi-basket2"></i>
+                <span>news</span>
+            </a>
+        </li>
         @endif
 
         <!-- End Blank Page Nav -->
