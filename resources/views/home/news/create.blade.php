@@ -47,6 +47,13 @@
                     <textarea id="editor" name="content"></textarea>
                 </div>
 
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-plus"></i>
+                        Create News
+                    </button>
+                </div>
+
                 <script>
                     ClassicEditor
                         .create(document.querySelector('#editor'))
