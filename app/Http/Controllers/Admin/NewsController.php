@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\News;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
 {
@@ -56,6 +58,24 @@ class NewsController extends Controller
             'content' => 'required',
             'category_id' => 'required'
         ]);
+
+        // upload image
+        $image = $request->file('image');
+        // fungsi untuk menyimpan image ke dalam folder public/news
+        // fungsi hashName() berfungsi untuk memberikan nama acak pada image
+        $image->storeAs('public/news', $image->hashName());
+
+        // create data ke dalam table news
+        News::create([
+            'category_id' => $request->category_id,
+            'title' => $request->title,
+            'slug' => Str::slug($request->slug),
+            'image' => $image->hashName(),
+            'content' => $request->content
+        ]);
+
+        return redirect()->route('news.index')
+            ->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**

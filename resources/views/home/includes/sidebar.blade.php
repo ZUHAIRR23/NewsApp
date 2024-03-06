@@ -18,7 +18,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link mt-2" href="{{ route('news.index') }}">
-                <i class="bi bi-basket2"></i>
+                <i class="bi bi-chat-square-text"></i>
                 <span>news</span>
             </a>
         </li>

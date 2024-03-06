@@ -14,7 +14,7 @@
                 {{-- fungsi old untuk menampilkan kembali inputan user --}}
                 <div class="mb-2">
                     <label for="inputTitle" class="form-label">News Title</label>
-                    <input type="text" class="form-control" id="inputName" name="name" value="{{ old('title') }}">
+                    <input type="text" class="form-control" id="inputTitle" name="title" value="{{ old('title') }}">
                 </div>
 
                 {{-- filed untuk image --}}
@@ -22,7 +22,7 @@
                 {{-- fungsi old untuk menampilkan kembali inputan user --}}
                 <div class="mb-2">
                     <label for="inputImage" class="form-label">News Image</label>
-                    <input type="file" class="form-control" id="inputName" name="name" value="{{ old('image') }}">
+                    <input type="file" class="form-control" id="inputImage" name="image" value="{{ old('image') }}">
                 </div>
 
                 <div class="mb-2">
