@@ -19,7 +19,7 @@
             @endif
 
             <div class="container mt-3">
-                <div class="card">
+                <div class="card p-3">
                     <div class="card-body">
                         <h5 class="card-title">Data Category</h5>
                         <table class="table datatable">
@@ -45,29 +45,31 @@
                                         {{-- menampilkan data image --}}
                                         {{-- fungsi accessor image adalah untuk menampilkan image tanpa harus menulis path secara manual --}}
                                         <td>
-                                            <img src="{{ $row->image }}" alt="image" width="100px">
+                                            <img src="{{ $row->image }}" width="100px" alt="image">
                                         </td>
-                                        <td class="d-flex justify-content-center">
-                                            {{-- Show using modal with id {{ row->id }} --}}
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#basicModal{{ $row->id }}">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            @include('home.category.include.modal-show')
-
-                                            {{-- button edit with route category.edit {{ row->id }} --}}
-                                            <a href="{{ route('category.edit', $row->id) }}" class="btn btn-warning">
-                                                <i class="bi bi-pencil-square"></i>
-                                            </a>
-
-                                            {{-- button delete with route category.destroy {{ row->id }} --}}
-                                            <form action="{{ route('category.destroy', $row->id) }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">
-                                                    <i class="bi bi-trash"></i>
+                                        <td>
+                                            <div class="d-flex justify-content-center">
+                                                {{-- Show using modal with id {{ row->id }} --}}
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#basicModal{{ $row->id }}">
+                                                    <i class="bi bi-eye"></i>
                                                 </button>
-                                            </form>
+                                                @include('home.category.include.modal-show')
+
+                                                {{-- button edit with route category.edit {{ row->id }} --}}
+                                                <a href="{{ route('category.edit', $row->id) }}" class="btn btn-warning">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+
+                                                {{-- button delete with route category.destroy {{ row->id }} --}}
+                                                <form action="{{ route('category.destroy', $row->id) }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @empty

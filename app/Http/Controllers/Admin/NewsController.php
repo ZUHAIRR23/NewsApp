@@ -18,8 +18,17 @@ class NewsController extends Controller
     public function index()
     {
         $title = 'News';
+
+        // get data terbaru dari table news dari modal news
+        $news = News::latest()->paginate(5);
+        $category = Category::all();
+
+        // compact berfungsi untuk mengirim data ke view
+        // yang di ambil dari variable
         return view('home.news.index', compact(
-            'title'
+            'title',
+            'news',
+            'category'
         ));
     }
 
