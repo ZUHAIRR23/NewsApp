@@ -39,7 +39,7 @@
                                     <td>{{ $row->title }}</td>
                                     <td>{{ $row->category->name }}</td>
                                     <td>
-                                        <img src="{{ $row->category->image }}" width="100px" alt="image">
+                                        <img src="{{ $row->image }}" width="100px" alt="image">
                                     </td>
                                     <td>
                                         <img src="{{ $row->category->image }}" width="100px" alt="ini image category">
@@ -51,9 +51,15 @@
                                         <a href="{{ route('news.edit', $row->id) }}" class="btn btn-warning">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <button class="btn btn-danger">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
+                                        <form action="{{ route('news.destroy', $row->id) }}" method="post"
+                                            class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger" type="submit"
+                                                onclick="return confirm('Bener Mau Apus Yang Ini?? :V')">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @empty

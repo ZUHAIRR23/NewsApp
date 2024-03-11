@@ -29,7 +29,7 @@
                     <label class="col-sm-2 col-form-label">Select</label>
                     <div class="col">
                         <select name="category_id" class="form-select" aria-label="Default select example">
-                            <option value="{{ $news->category->id }}" selected>{{ $news->category->name }}</option>
+                            <option selected value="{{ $news->category->id }}">{{ $news->category->name }}</option>
                             <option>==== Pilih Category ====</option>
                             @foreach ($category as $row)
                                 <option value="{{ $row->id }}">{{ $row->name }}</option>
@@ -51,9 +51,9 @@
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-primary" type="submit">
-                        <i class="bi bi-plus"></i>
-                        Create News
+                    <button class="btn btn-warning" type="submit">
+                        <i class="bi bi-pencil"></i>
+                        Update News
                     </button>
                 </div>
 

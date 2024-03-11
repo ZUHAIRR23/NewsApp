@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use GuzzleHttp\RedirectMiddleware;
 use Illuminate\Support\Facades\Storage;
 
@@ -52,10 +53,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //melakukan validasi data
+        // melakukan validasi data
         $this->validate($request, [
             'name' => 'required|max:100',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:5120',
         ]);
 
         // melakukan upload image

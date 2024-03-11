@@ -28,7 +28,9 @@ Auth::routes();
 
 // Route Middleware
 Route::middleware('auth')->group(function () {
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/profile', [App\Http\Controllers\Profile\ProfileController::class, 'index'])->name('profile.index');
 
     // Route for Admin
     Route::middleware(['auth', 'admin'])->group(function () {
