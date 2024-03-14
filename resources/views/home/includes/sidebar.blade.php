@@ -7,21 +7,27 @@
                 <i class="bi bi-grid"></i>
                 <span>Home</span>
             </a>
-        </li><!-- End Dashboard Nav -->
+        </li>
 
         @if (Auth::user()->role == 'admin')
-        <li class="nav-item">
-            <a class="nav-link mt-2" href="{{ route('category.index') }}">
-                <i class="bi bi-basket2"></i>
-                <span>Category</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link mt-2" href="{{ route('news.index') }}">
-                <i class="bi bi-chat-square-text"></i>
-                <span>news</span>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link " href="{{ route('allUser') }}">
+                    <i class="bi bi-person"></i>
+                    <span>User</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mt-2" href="{{ route('category.index') }}">
+                    <i class="bi bi-basket2"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link mt-2" href="{{ route('news.index') }}">
+                    <i class="bi bi-chat-square-text"></i>
+                    <span>news</span>
+                </a>
+            </li>
         @endif
 
         <!-- End Blank Page Nav -->

@@ -10,7 +10,7 @@
             <div class="card p-3">
                 <h3 class="text-center">Detail Account</h3>
                 <ul class="list-group">
-                    <li class="list-group-item active" aria-current="true">Name Account : <strong>{{ Auth::user()->name }}</strong></li>
+                    <li class="list-group-item">Name Account : <strong>{{ Auth::user()->name }}</strong></li>
                     <li class="list-group-item">E-mail Account : <strong>{{ Auth::user()->email }}</strong></li>
                     <li class="list-group-item">Role Account : <strong>{{ Auth::user()->role }}</strong></li>
                 </ul>
