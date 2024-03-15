@@ -25,7 +25,7 @@ class Profile extends Model
     // Accessor Image Profile
     public function Image() : Attribute {
         return Attribute::make(
-            get: fn($value) => asset('/storage/profile'. $value)
+            get: fn($value) => asset('/storage/profile/'. $value)
         );
     }
 }

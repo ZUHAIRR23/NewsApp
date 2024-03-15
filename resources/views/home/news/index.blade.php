@@ -70,6 +70,8 @@
                         </tbody>
                     </table>
                 </div>
+                {{-- PAGINATE --}}
+                {{ $news->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>
