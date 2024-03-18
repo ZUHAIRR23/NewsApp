@@ -21,15 +21,15 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{asset('ZenBlog/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('ZenBlog/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-    <link href="{{asset('ZenBlog/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
-    <link href="{{asset('ZenBlog/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-    <link href="{{asset('ZenBlog/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+    <link href="{{ asset('ZenBlog/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('ZenBlog/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('ZenBlog/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('ZenBlog/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('ZenBlog/assets/vendor/aos/aos.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS Files -->
-    <link href="{{asset('ZenBlog/assets/css/variables.css')}}" rel="stylesheet">
-    <link href="{{asset('ZenBlog/assets/css/main.css')}}" rel="stylesheet">
+    <link href="{{ asset('ZenBlog/assets/css/variables.css') }}" rel="stylesheet">
+    <link href="{{ asset('ZenBlog/assets/css/main.css') }}" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: ZenBlog
@@ -50,78 +50,7 @@
     <main id="main">
 
         <!-- ======= Hero Slider Section ======= -->
-        {{-- <section id="hero-slider" class="hero-slider">
-            <div class="container-md" data-aos="fade-in">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="swiper sliderFeaturedPosts">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <a href="single-post.html" class="img-bg d-flex align-items-end"
-                                        style="background-image: url('{{asset('ZenBlog/assets/img/post-slide-1.jpg')}}');">
-                                        <div class="img-bg-inner">
-                                            <h2>The Best Homemade Masks for Face (keep the Pimples Away)</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque
-                                                est mollitia! Beatae minima assumenda repellat harum vero, officiis
-                                                ipsam magnam obcaecati cumque maxime inventore repudiandae quidem
-                                                necessitatibus rem atque.</p>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <a href="single-post.html" class="img-bg d-flex align-items-end"
-                                        style="background-image: url('{{asset('ZenBlog/assets/img/post-slide-2.jpg')}}');">
-                                        <div class="img-bg-inner">
-                                            <h2>17 Pictures of Medium Length Hair in Layers That Will Inspire Your New
-                                                Haircut</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque
-                                                est mollitia! Beatae minima assumenda repellat harum vero, officiis
-                                                ipsam magnam obcaecati cumque maxime inventore repudiandae quidem
-                                                necessitatibus rem atque.</p>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <a href="single-post.html" class="img-bg d-flex align-items-end"
-                                        style="background-image: url('{{asset('ZenBlog/assets/img/post-slide-3.jpg')}}');">
-                                        <div class="img-bg-inner">
-                                            <h2>13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque
-                                                est mollitia! Beatae minima assumenda repellat harum vero, officiis
-                                                ipsam magnam obcaecati cumque maxime inventore repudiandae quidem
-                                                necessitatibus rem atque.</p>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <a href="single-post.html" class="img-bg d-flex align-items-end"
-                                        style="background-image: url('{{asset('ZenBlog/assets/img/post-slide-4.jpg')}}');">
-                                        <div class="img-bg-inner">
-                                            <h2>9 Half-up/half-down Hairstyles for Long and Medium Hair</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque
-                                                est mollitia! Beatae minima assumenda repellat harum vero, officiis
-                                                ipsam magnam obcaecati cumque maxime inventore repudiandae quidem
-                                                necessitatibus rem atque.</p>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="custom-swiper-button-next">
-                                <span class="bi-chevron-right"></span>
-                            </div>
-                            <div class="custom-swiper-button-prev">
-                                <span class="bi-chevron-left"></span>
-                            </div>
-
-                            <div class="swiper-pagination"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
+        
         <!-- End Hero Slider Section -->
 
         <!-- ======= Post Grid Section ======= -->
@@ -274,14 +203,14 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="{{asset('ZenBlog/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('ZenBlog/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-    <script src="{{asset('ZenBlog/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-    <script src="{{asset('ZenBlog/assets/vendor/aos/aos.js')}}"></script>
-    <script src="{{asset('ZenBlog/assets/vendor/php-email-form/validate.js')}}"></script>
+    <script src="{{ asset('ZenBlog/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('ZenBlog/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('ZenBlog/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('ZenBlog/assets/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('ZenBlog/assets/vendor/php-email-form/validate.js') }}"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{asset('ZenBlog/assets/js/main.js')}}"></script>
+    <script src="{{ asset('ZenBlog/assets/js/main.js') }}"></script>
 
 </body>
 
