@@ -18,8 +18,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::post('/logout', [\App\Http\Controllers\API\AuthController::class, 'logout']);
+    Route::post('/updatePassword', [\App\Http\Controllers\API\AuthController::class, 'updatePassword']);
+});
+
+// Route For Admin
+Route::group(['middleware'=> ['auth:sanctum', 'admin']], function() {
+    Route::post('/category/create', [\App\Http\Controllers\API\CategoryController::class, 'store']);
+    Route::post('/category/update/{id}', [\App\Http\Controllers\API\CategoryController::class, 'update']);
+    Route::delete('/category/destroy/{id}', [\App\Http\Controllers\API\CategoryController::class, 'destroy']);
 });
 
 Route::post('/login', [\App\Http\Controllers\API\AuthController::class, 'login']);
